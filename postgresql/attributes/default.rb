@@ -29,7 +29,7 @@ when "debian"
     default['postgresql']['version'] = "9.1"
   end
 
-  default['postgresql']['dir'] = "/etc/postgresql/#{node['postgresql']['version']}/main"
+  default['postgresql']['dir'] = "/vol/data"
   case
   when node['platform_version'].to_f < 6.0 # All 5.X
     default['postgresql']['server']['service_name'] = "postgresql-#{node['postgresql']['version']}"
