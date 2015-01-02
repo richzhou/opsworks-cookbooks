@@ -29,7 +29,7 @@ when "debian"
     default['postgresql']['version'] = "9.1"
   end
 
-  default['postgresql']['dir'] = "/vol/data"
+  default['postgresql']['dir'] = "/etc/postgresql/#{node['postgresql']['version']}/main"
   case
   when node['platform_version'].to_f < 6.0 # All 5.X
     default['postgresql']['server']['service_name'] = "postgresql-#{node['postgresql']['version']}"
@@ -52,7 +52,7 @@ when "ubuntu"
     default['postgresql']['version'] = "9.1"
   end
 
-  default['postgresql']['dir'] = "/vol/data"
+  default['postgresql']['dir'] = "/etc/postgresql/#{node['postgresql']['version']}/main"
   case
   when (node['platform_version'].to_f <= 10.04) && (! node['postgresql']['enable_pgdg_apt'])
     default['postgresql']['server']['service_name'] = "postgresql-#{node['postgresql']['version']}"
@@ -140,9 +140,9 @@ end
 # merge/precedence order during the Chef run.
 case node['platform_family']
 when 'debian'
-  default['postgresql']['config']['data_directory'] = "/vol/data/main"
-  default['postgresql']['config']['hba_file'] = "/vol/data/main/pg_hba.conf"
-  default['postgresql']['config']['ident_file'] = "/vol/data/main/pg_ident.conf"
+  default['postgresql']['config']['data_directory'] = "/var/lib/postgresql/#{node['postgresql']['version']}/main"
+  default['postgresql']['config']['hba_file'] = "/etc/postgresql/#{node['postgresql']['version']}/main/pg_hba.conf"
+  default['postgresql']['config']['ident_file'] = "/etc/postgresql/#{node['postgresql']['version']}/main/pg_ident.conf"
   default['postgresql']['config']['external_pid_file'] = "/var/run/postgresql/#{node['postgresql']['version']}-main.pid"
   default['postgresql']['config']['listen_addresses'] = 'localhost'
   default['postgresql']['config']['port'] = 5432
