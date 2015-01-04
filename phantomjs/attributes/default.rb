@@ -24,7 +24,7 @@
 #
 
 # The version of phantomjs to install
-default['phantomjs']['version'] = '1.9.7'
+default['phantomjs']['version'] = '1.9.8'
 
 # The list of packages to install
 default['phantomjs']['packages'] = []
