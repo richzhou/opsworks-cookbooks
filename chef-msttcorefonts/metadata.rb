@@ -6,7 +6,6 @@ description "Installs Microsoft corefonts on linux boxes"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version "0.9"
 
-depends "yum"
 depends "apt"
 
 supports "scientific", ">= 6.0"
