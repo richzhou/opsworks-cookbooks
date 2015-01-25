@@ -1,0 +1,1 @@
+Install aws script to /usr/bin
