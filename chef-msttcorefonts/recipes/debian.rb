@@ -8,7 +8,9 @@ execute "enable multiverse" do
   command "apt-add-repository multiverse"
   not_if "egrep '^deb.*multiverse' /etc/apt/sources.list"
   # notify "apt-get update" resource found in apt cookbook
-  notifies :run, 'execute[apt-get update]', :immediately
+  command "apt-get update"
+  
+  #notifies :run, 'execute[apt-get update]', :immediately
 end
 
 #--------
